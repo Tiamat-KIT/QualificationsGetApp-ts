@@ -1,0 +1,20 @@
+{
+  "name": "qualificationsgetapp-ts",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "convex dev",
+    "codegen": "convex codegen",
+    "test-serve": "bun run index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "convex": "^1.13.0",
+    "fastify": "^4.28.1"
+  }
+}
