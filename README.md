@@ -1,0 +1,2 @@
+# QualificationsGetApp-ts
+資格取得用アプリのバックエンドをいったんTypeScriptで組みます
