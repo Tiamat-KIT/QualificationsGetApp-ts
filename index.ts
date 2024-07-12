@@ -1,31 +1,26 @@
 import fastify from "fastify";
-import { ConvexClient } from "convex/browser";
-import { api } from "./convex/_generated/api";
+import ExamRoute from "./route/exam/index"
 
 const server = fastify({
     logger: true
 })
 
-function OpenConvexClient() {
-    return new ConvexClient(process.env["CONVEX_URL"]!)
-    
-}
-
-server.get("/exam/list",async (req,rep) => {
-    const client = OpenConvexClient()
-    const get_exam_all = await client.query(api.exam.getAllExams,{})
-    rep.type("application/json").code(200)
-    return {
-        result: get_exam_all
-    }
+server.get("/",(_,rep) => {
+    rep.send("Hello!")
 })
 
-server.listen(
-    {
-        port: 3000
-    },
-    (err,address) => {
-        if(err) throw err
-        console.log("Server Port: " + address)
+server.register(ExamRoute,{
+    prefix: "/exam",
+    logLevel: "debug"
+})
+
+
+const start = async () => {
+    try {
+        await server.listen({ port: 3000 })
+    } catch (err) {
+        server.log.error(err)
+        process.exit(1)
     }
-)
+}
+start()

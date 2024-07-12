@@ -3,9 +3,9 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "dev": "convex dev",
-    "codegen": "convex codegen",
-    "test-serve": "bun run index.ts"
+    "start": "bun run index.ts",
+    "conex:dev": "bun convex dev",
+    "codegen": "bunx convex codegen"
   },
   "devDependencies": {
     "@types/bun": "latest"
@@ -14,7 +14,9 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "@types/node": "^20.14.10",
     "convex": "^1.13.0",
-    "fastify": "^4.28.1"
+    "fastify": "^4.28.1",
+    "fastify-plugin": "^4.5.1"
   }
 }

@@ -5,7 +5,11 @@ export const addQuiz = mutation({
     args: {
         title: v.string(),
         description: v.string(),
-        selection: v.id("selection"),
+        selection: v.object({
+            selection: v.array(v.string()),
+            answer: v.string(),
+            answer_string:v.string()
+        }),
         exam_id: v.id("exam")
     },
     handler: async (ctx,args) => {
