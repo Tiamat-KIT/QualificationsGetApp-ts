@@ -27,7 +27,9 @@ export const getQuizes = query({
         exam_id: v.id("exam")
     },
     handler: async (ctx,args) => {
-        return ctx.db.get(args.exam_id)
+        return ctx.db.query("quiz")
+        .filter(q => q.eq(q.field("exam_id"),args.exam_id))
+        .collect()
     }
 })
 
