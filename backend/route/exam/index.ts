@@ -1,6 +1,7 @@
 import fp from "fastify-plugin"
 import OpenConvexClient from "../../utils/ConvexClient"
 import { api } from "../../convex/_generated/api"
+import type { Id } from "../../convex/_generated/dataModel"
 
 const client = OpenConvexClient()
 
@@ -43,6 +44,19 @@ export default fp(async function(fastify,opts) {
             const get_exam_all = await client.query(api.exam.getAllExams,{})
             return {
                 result: get_exam_all
+            }
+        } catch(err) {
+            throw err
+        }
+    })
+    fastify.get("/exam/:exam_id",async(req,rep) => {
+        rep.type("application/json").code(200)
+        try {
+            const get_exam = await client.query(api.exam.getExam,{
+                id: (req.params as {[x in string]: string}).exam_id as Id<"exam">
+            })
+            return {
+                result: get_exam
             }
         } catch(err) {
             throw err

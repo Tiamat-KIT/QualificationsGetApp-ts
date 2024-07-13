@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    a {
+        @apply border border-black rounded-lg p-2 text-center bg-black text-white font-bold
+    }
+    .card {
+        @apply p-3 border border-black rounded-lg
+    }
+}
