@@ -16,5 +16,11 @@ export default defineSchema({
             answer: v.string(),
             answer_string:v.string()
         })
-    })
+    }),
+    admin_user: defineTable({
+        name: v.string(),
+        email: v.string(),
+        password: v.string(),
+        tokenIdentifier: v.string()
+    }).index("by_token",["tokenIdentifier"])
 })
